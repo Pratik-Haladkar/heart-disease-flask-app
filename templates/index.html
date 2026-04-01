@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Heart Disease Risk System</title>
+<link rel="icon" href="data:,">
+
+<style>
+body {
+    font-family: Arial;
+    background: linear-gradient(to right, #141e30, #243b55);
+    color: white;
+}
+
+.container {
+    width: 700px;
+    margin: 40px auto;
+    background: #1e2a38;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+h1 {
+    text-align: center;
+}
+
+label {
+    margin-top: 10px;
+    display: block;
+}
+
+input, select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 6px;
+    border: none;
+}
+
+button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 12px;
+    background: #00c6ff;
+    border: none;
+    border-radius: 8px;
+    color: black;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #00a3cc;
+}
+
+.result {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 20px;
+}
+
+/* Result Colors */
+.high {
+    background-color: #ff4d4d;
+}
+
+.low {
+    background-color: #28a745;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<h1>❤️ Heart Disease Risk System</h1>
+
+<form action="/predict" method="post">
+
+<label>Age</label>
+<input type="number" name="age" required>
+
+<label>Sex</label>
+<select name="sex">
+<option value="0">Female</option>
+<option value="1">Male</option>
+</select>
+
+<label>Chest Pain</label>
+<select name="cp">
+<option value="0">Typical Angina</option>
+<option value="1">Atypical Angina</option>
+<option value="2">Non-anginal</option>
+<option value="3">Asymptomatic</option>
+</select>
+
+<label>Resting Blood Pressure</label>
+<input type="number" name="trestbps" required>
+
+<label>Cholesterol</label>
+<input type="number" name="chol" required>
+
+<label>Fasting Blood Sugar</label>
+<select name="fbs">
+<option value="0">Less than 120</option>
+<option value="1">Greater than 120</option>
+</select>
+
+<label>Rest ECG</label>
+<select name="restecg">
+<option value="0">Normal</option>
+<option value="1">ST-T Abnormality</option>
+<option value="2">Hypertrophy</option>
+</select>
+
+<label>Max Heart Rate</label>
+<input type="number" name="thalach" required>
+
+<label>Exercise Angina</label>
+<select name="exang">
+<option value="0">No</option>
+<option value="1">Yes</option>
+</select>
+
+<label>Oldpeak</label>
+<input type="number" step="any" name="oldpeak" required>
+
+<label>Slope</label>
+<select name="slope">
+<option value="0">Upsloping</option>
+<option value="1">Flat</option>
+<option value="2">Downsloping</option>
+</select>
+
+<label>Major Vessels (0-3)</label>
+<input type="number" name="ca" min="0" max="3" required>
+
+<label>Thal</label>
+<select name="thal">
+<option value="0">Normal</option>
+<option value="1">Fixed Defect</option>
+<option value="3">Reversible Defect</option>
+</select>
+
+<button type="submit">🔍 Predict</button>
+
+</form>
+
+{% if prediction_text %}
+<div class="result {{ 'high' if 'High' in prediction_text else 'low' }}">
+    {{ prediction_text }}
+</div>
+{% endif %}
+
+</div>
+
+</body>
+</html>

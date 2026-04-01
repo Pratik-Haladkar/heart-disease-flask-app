@@ -73,7 +73,7 @@ A production-style **Machine Learning web application** built using Flask that p
 ### 🚨 Test Case 2
 
 ```
-38,1,2,138,175,0,1,173,0,0,2,4,2,1
+38,1,2,138,175,0,1,173,0,0,2,3,2,1
 ```
 
 **UI Input Mapping:**
@@ -89,7 +89,7 @@ A production-style **Machine Learning web application** built using Flask that p
 * Exercise Angina → No
 * Oldpeak → 0
 * Slope → Downsloping
-* Major Vessels → 4
+* Major Vessels → 3
 * Thal → Fixed Defect
 
 👉 **Expected Output:** High Risk 🚨
